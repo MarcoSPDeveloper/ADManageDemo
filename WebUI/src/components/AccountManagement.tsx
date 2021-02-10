@@ -1,6 +1,6 @@
 import React from 'react'
 import { Col, Row } from 'react-bootstrap';
-import IUserResponsePayload from '../../api/IUserResponsePayload';
+import IUserResponsePayload from '../api/IUserResponsePayload';
 
 interface AccountManagementProps {
     User: IUserResponsePayload | undefined;

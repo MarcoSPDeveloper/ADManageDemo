@@ -1,7 +1,7 @@
 import React from 'react'
 import { Nav } from 'react-bootstrap';
-import Pages from '../Pages/Pages';
-import Tab from '../Pages/Pages';
+import Pages from './Pages/Pages';
+import Tab from './Pages/Pages';
 
 interface SubNavigationProps {
     activeTab: Pages;

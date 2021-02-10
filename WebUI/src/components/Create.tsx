@@ -1,11 +1,11 @@
 import React from 'react'
 import { Col, Row,Form } from 'react-bootstrap';
 
-function UserProperties() {
+function Create() {
     return (
         <div className="card">
             <div className="card-header">
-                Eigenschaften
+                Benutzer anlegen
         </div>
             <div className="card-body">
                 <Form>
@@ -14,7 +14,7 @@ function UserProperties() {
                         Vorname:
                     </Col>
                     <Col>
-                    <input className="form-control" type="text" placeholder="Default input"/>   
+                    <input className="form-control" type="text" />   
                     </Col>
                 </Row>
                 <Row>
@@ -22,7 +22,7 @@ function UserProperties() {
                         Nachname:
                     </Col>
                     <Col>
-                    <input className="form-control" type="text" placeholder="Default input"/>
+                    <input className="form-control" type="text" />
                     </Col>
                 </Row>
                 <Row>
@@ -30,7 +30,7 @@ function UserProperties() {
                             LogonName:
                     </Col>
                     <Col>
-                    <input className="form-control" type="text" placeholder="Default input"/>
+                    <input className="form-control" type="text" />
                     </Col>
                 </Row>
                 <Row>
@@ -38,7 +38,7 @@ function UserProperties() {
                             Beschreibung:
                     </Col>
                     <Col>
-                    <input className="form-control" type="text" placeholder="Default input"/>
+                    <input className="form-control" type="text" />
                     </Col>
                 </Row>
                 <Row>
@@ -46,7 +46,7 @@ function UserProperties() {
                             CN:
                     </Col>
                     <Col>
-                    <input className="form-control" type="text" placeholder="Default input"/>
+                    <input className="form-control" type="text" />
                     </Col>
                 </Row>
                 <Row>
@@ -54,7 +54,7 @@ function UserProperties() {
                             Mail:
                     </Col>
                     <Col>
-                        <input className="form-control" type="email" placeholder="Default input"/>
+                        <input className="form-control" type="email" />
                     </Col>
                 </Row>
                 <Row>
@@ -62,18 +62,19 @@ function UserProperties() {
                             UPN:
                     </Col>
                     <Col>
-                        <input className="form-control" type="text" placeholder="Default input"/>
+                        <input className="form-control" type="text" />
                     </Col>
                 </Row>
                 </Form>
 
                 <div className="border-top my-3"></div>
 
-                <a href="#" className="btn btn-primary">Eigenschaften ändern</a>
+                <a href="#" className="btn btn-primary">User vorkonfigurieren</a>  
+                <a href="#" className="btn btn-secondary">User erstellen</a>
             </div>
         </div>
     );
 
 };
 
-export default UserProperties;
+export default Create;

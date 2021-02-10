@@ -1,5 +1,5 @@
 import React from "react";
-import IUserResponsePayload from "../../api/IUserResponsePayload";
+import IUserResponsePayload from "../api/IUserResponsePayload";
 
 interface LogonscriptProps {
   User: IUserResponsePayload | undefined;
@@ -12,7 +12,7 @@ function Logonscript(props: LogonscriptProps) {
       <div className="card-body">
         <p className="card-text">
           <div className="input-group">
-            <textarea className="form-control" aria-label="With textarea" defaultValue= {"Logonscript for " + props.User?.email}>
+            <textarea className="form-control" aria-label="With textarea" defaultValue= {props.User !== undefined ? "Logonscript for "+props.User.username : ""}>
              
             </textarea>
           </div>

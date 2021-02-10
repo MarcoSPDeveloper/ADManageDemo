@@ -5,10 +5,12 @@ import CreateUserPage from "./CreateUserPage";
 import DeleteUserPage from "./DeleteUserPage";
 import EditUserPage from "./EditUserPage";
 import Tab from "./Pages";
+import IUserResponsePayload from '../../api/IUserResponsePayload';
 
 
 interface ContentProps {
     activeTab: Tab;
+    users: IUserResponsePayload[];
 }
 
 function Content(props:ContentProps) {
@@ -19,24 +21,24 @@ function Content(props:ContentProps) {
                     case Tab.Accountmanagment:
                         return (
                             <>
-                                <AccountManagementPage/>
+                                <AccountManagementPage users={props.users}/>
                             </>
                         );
                     case Tab.Edit:
                         return (
-                            <EditUserPage/>
+                            <EditUserPage users={props.users}/>
                         );
                         case Tab.Delete:
                             return (
-                                <DeleteUserPage/>
+                                <DeleteUserPage  users={props.users}/>
                             );
                             case Tab.Create:
                                 return (
-                                    <CreateUserPage/>
+                                    <CreateUserPage  users={props.users}/>
                                 );
                                 case Tab.Copy:
                                     return (
-                                        <CopyUserPage/>
+                                        <CopyUserPage  users={props.users}/>
                                     );
                     
                     default: throw new Error('unsupported active tab.');

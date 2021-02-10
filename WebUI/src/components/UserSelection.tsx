@@ -3,29 +3,16 @@ import React, { Component, useState, useEffect } from 'react'
 
 import Table from 'react-bootstrap//Table';
 import Form from 'react-bootstrap/Form';
-import IUserResponsePayload from '../../api/IUserResponsePayload';
+import IUserResponsePayload from '../api/IUserResponsePayload';
 
 interface UserSelectionProps {
     onUserChange: (selectedUser: IUserResponsePayload) => void;
+    selectableUsers: IUserResponsePayload[];
 };
 
 function UserSelection(props: UserSelectionProps) {
 
-    const [users, setUsers] = useState<Array<IUserResponsePayload>>([]);
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
-
-
-    useEffect(() => {
-
-        if (isLoaded == false) {
-            axios.get("https://jsonplaceholder.typicode.com/users")
-                .then(response => {
-                    console.log(response);
-                    setIsLoaded(true);
-                    setUsers(response.data);
-                })
-        }
-    })
 
     return (
 
@@ -52,7 +39,7 @@ function UserSelection(props: UserSelectionProps) {
                     </thead>
                     <tbody>
                     {
-                            users.map(user =>
+                            props.selectableUsers.map(user =>
                                 <tr key={user.id}>
                                                  <td>
                                         {(

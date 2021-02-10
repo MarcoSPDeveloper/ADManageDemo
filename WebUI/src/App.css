@@ -16,6 +16,10 @@
   background-color: rgba(128, 128, 128, 0.062);
 }
 
+.btn{
+  margin-right: 10px;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {

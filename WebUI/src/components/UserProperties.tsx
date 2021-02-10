@@ -1,11 +1,16 @@
 import React from 'react'
 import { Col, Row,Form } from 'react-bootstrap';
+import IUserResponsePayload from '../api/IUserResponsePayload';
 
-function Create() {
+interface UserPropertiesProps {
+    User: IUserResponsePayload | undefined;
+};
+
+function UserProperties(props:UserPropertiesProps) {
     return (
         <div className="card">
             <div className="card-header">
-                Benutzer anlegen
+                Eigenschaften
         </div>
             <div className="card-body">
                 <Form>
@@ -14,7 +19,7 @@ function Create() {
                         Vorname:
                     </Col>
                     <Col>
-                    <input className="form-control" type="text" placeholder="Default input"/>   
+                    <input className="form-control" type="text" defaultValue={props.User !== undefined ? props.User.username : ""}/>   
                     </Col>
                 </Row>
                 <Row>
@@ -22,7 +27,7 @@ function Create() {
                         Nachname:
                     </Col>
                     <Col>
-                    <input className="form-control" type="text" placeholder="Default input"/>
+                    <input className="form-control" type="text" defaultValue={props.User !== undefined ? props.User.name : ""}/>
                     </Col>
                 </Row>
                 <Row>
@@ -30,7 +35,7 @@ function Create() {
                             LogonName:
                     </Col>
                     <Col>
-                    <input className="form-control" type="text" placeholder="Default input"/>
+                    <input className="form-control" type="text" defaultValue={props.User !== undefined ? props.User.username : ""}/>
                     </Col>
                 </Row>
                 <Row>
@@ -38,7 +43,7 @@ function Create() {
                             Beschreibung:
                     </Col>
                     <Col>
-                    <input className="form-control" type="text" placeholder="Default input"/>
+                    <input className="form-control" type="text"/>
                     </Col>
                 </Row>
                 <Row>
@@ -46,7 +51,7 @@ function Create() {
                             CN:
                     </Col>
                     <Col>
-                    <input className="form-control" type="text" placeholder="Default input"/>
+                    <input className="form-control" type="text"/>
                     </Col>
                 </Row>
                 <Row>
@@ -54,7 +59,7 @@ function Create() {
                             Mail:
                     </Col>
                     <Col>
-                        <input className="form-control" type="email" placeholder="Default input"/>
+                        <input className="form-control" type="email" defaultValue={props.User !== undefined ? props.User.email : ""}/>
                     </Col>
                 </Row>
                 <Row>
@@ -62,19 +67,18 @@ function Create() {
                             UPN:
                     </Col>
                     <Col>
-                        <input className="form-control" type="text" placeholder="Default input"/>
+                        <input className="form-control" type="text" defaultValue={props.User !== undefined ? props.User.username : ""}/>
                     </Col>
                 </Row>
                 </Form>
 
                 <div className="border-top my-3"></div>
 
-                <a href="#" className="btn btn-primary">User vorkonfigurieren</a>
-                <a href="#" className="btn btn-secondary">User erstellen</a>
+                <a href="#" className="btn btn-primary">Eigenschaften ändern</a>
             </div>
         </div>
     );
 
 };
 
-export default Create;
+export default UserProperties;
