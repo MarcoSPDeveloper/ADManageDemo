@@ -10,13 +10,13 @@ function Logonscript(props: LogonscriptProps) {
     <div className="card">
       <div className="card-header">Logonscript</div>
       <div className="card-body">
-        <p className="card-text">
+        <div className="card-text">
           <div className="input-group">
             <textarea className="form-control" aria-label="With textarea" defaultValue= {props.User !== undefined ? "Logonscript for "+props.User.username : ""}>
              
             </textarea>
           </div>
-        </p>
+        </div>
         <a href="#" className="btn btn-primary">
           Save
         </a>

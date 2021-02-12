@@ -1,17 +1,10 @@
 import './App.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Nav from 'react-bootstrap/Nav';
-import { Container, NavItem } from 'react-bootstrap';
-
-import logo from './logo.png';
+import { Container } from 'react-bootstrap';
 
 import Header from './components/Header';
-import TopNavigation from './components/TopNavigation';
-import PropertyManagement from './components/Pages/EditUserPage';
-import AccountManagementPage from './components/Pages/AccountManagementPage';
+import LocationNavigation from './components/LocationNavigation';
 import SubNavigation from './components/SubNavigation';
 import Content from './components/Pages/Content';
 import Pages from './components/Pages/Pages';
@@ -20,6 +13,7 @@ import IUserResponsePayload from './api/IUserResponsePayload';
 
 function App() {
 
+  const [activeLocation, setActiveLocation] = useState<string>("Lossburg");
   const [activeTab, setActiveTab] = useState<Pages>(Pages.Accountmanagment);
 
   const [users, setUsers] = useState<Array<IUserResponsePayload>>([]);
@@ -29,14 +23,27 @@ function App() {
     setActiveTab(clickedTab);
   }
 
+  const handleLocationChange = (clickedLocation: string) => {
+    setActiveLocation(clickedLocation);
+    setUsersLoaded(false);
+    console.log(clickedLocation);
+  }
+
   useEffect(() => {
 
-    if (usersLoaded == false) {
+    if (usersLoaded === false) {
         axios.get("https://jsonplaceholder.typicode.com/users")
             .then(response => {
                 console.log(response);
                 setUsersLoaded(true);
+        
+                //Manupulate name for demo, simulate the location
+                for (let i = 0; i < response.data.length; i++) {
+                  response.data[i].name = response.data[i].name + "_" + activeLocation;
+                }
+
                 setUsers(response.data);
+
             })
     }
 })
@@ -45,7 +52,7 @@ function App() {
     <Container className="container-fluid">
 
       <Header />
-      <TopNavigation />
+      <LocationNavigation selectedLocation="Lossburg" onLocationChange={handleLocationChange} />
       <SubNavigation activeTab={activeTab} onTabChange={handleTabChange}/>
       
       <Content activeTab={activeTab} users={users}></Content>
