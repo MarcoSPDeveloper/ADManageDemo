@@ -55,13 +55,13 @@ function App() {
 useEffect(() => {
 
   if (locationsLoaded === false) {
-      axios.get("https://localhost:44328/API/Locations")
-          .then(response => {
-              console.log(response);
-              setLocationsLoaded(true);
-              setLocations(response.data);
+      //axios.get("https://localhost:44328/API/Locations")
+      //    .then(response => {
+      //        console.log(response);
+      //        setLocationsLoaded(true);
+      //        setLocations(response.data);
 
-          })
+      //    })
   }
 })
 
