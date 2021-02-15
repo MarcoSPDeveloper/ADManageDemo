@@ -9,6 +9,7 @@ import SubNavigation from './components/SubNavigation';
 import Content from './components/Pages/Content';
 import Pages from './components/Pages/Pages';
 import IUserResponsePayload from './api/IUserResponsePayload';
+import ILocationResposePayload from './api/ILocationResponsePayload';
 
 
 function App() {
@@ -18,6 +19,9 @@ function App() {
 
   const [users, setUsers] = useState<Array<IUserResponsePayload>>([]);
   const [usersLoaded, setUsersLoaded] = useState<boolean>(false);
+
+  const [locations, setLocations] = useState<Array<ILocationResposePayload>>([]);
+  const [locationsLoaded, setLocationsLoaded] = useState<boolean>(false);
 
   const handleTabChange = (clickedTab: Pages) => {
     setActiveTab(clickedTab);
@@ -46,6 +50,19 @@ function App() {
 
             })
     }
+})
+
+useEffect(() => {
+
+  if (locationsLoaded === false) {
+      axios.get("https://localhost:44328/API/Locations")
+          .then(response => {
+              console.log(response);
+              setLocationsLoaded(true);
+              setLocations(response.data);
+
+          })
+  }
 })
 
   return (
